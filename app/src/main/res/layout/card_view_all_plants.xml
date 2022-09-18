@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp"
+    android:backgroundTint="#D5914C"
+    app:cardCornerRadius="10dp">
+
+    <ImageView
+        android:id="@+id/iv_plant_card"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="start|center"
+        android:scaleType="centerCrop"
+        android:importantForAccessibility="no"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tv_plant_name_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="160dp"
+        android:textColor="@color/black"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+</androidx.cardview.widget.CardView>
