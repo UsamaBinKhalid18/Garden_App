@@ -7,14 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gardenapp.ItemSelectListener
 import com.example.gardenapp.R
 import com.example.gardenapp.datahandling.Data
 
-class AllPlantsListAdapter():RecyclerView.Adapter<AllPlantsListAdapter.PlantViewHolder>() {
+class AllPlantsListAdapter(private val itemSelectListener: ItemSelectListener):RecyclerView.Adapter<AllPlantsListAdapter.PlantViewHolder>() {
     inner class PlantViewHolder(view: View):RecyclerView.ViewHolder(view){
         val tvPlantName:TextView=view.findViewById(R.id.tv_plant_name_card)
         val ivPlant:ImageView=view.findViewById(R.id.iv_plant_card)
+        val cardView:CardView=view.findViewById(R.id.cv_all_plants)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantViewHolder {
@@ -30,5 +33,9 @@ class AllPlantsListAdapter():RecyclerView.Adapter<AllPlantsListAdapter.PlantView
         Log.d("TAG", "onBindViewHolder: $position")
         if(plant.imageUriPath!=null)
             holder.ivPlant.setImageURI(Uri.parse(plant.imageUriPath))
+
+        holder.cardView.setOnClickListener {
+            itemSelectListener.onClick(plant)
+        }
     }
 }

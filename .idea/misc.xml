@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.16" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_plant_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/card_view_all_plants.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_all_flower_list.xml" value="0.41794871794871796" />
         <entry key="app/src/main/res/layout/fragment_all_plant_list.xml" value="0.1" />
