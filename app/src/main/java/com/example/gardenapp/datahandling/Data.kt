@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.*
@@ -33,7 +34,11 @@ object Data {
         val dataFile = File(context.filesDir.path + FILE_PATH)
 
         return if (dataFile.exists()) {
-            FileInputStream(dataFile).reader().readText()
+            val string:String=FileInputStream(dataFile).reader().readText()
+            if(string.isNotEmpty())
+                string
+            else
+                context.assets.open("flowers.json").reader().readText()
         } else {
             context.assets.open("flowers.json").reader().readText()
         }
@@ -59,6 +64,7 @@ object Data {
             }
 
             if(plant.imageUriPath==null||imageDoesNotExist){
+                Log.d("TAG", "downloadImages: ")
                 threadPool.execute{
                 val inputStream = URL(plant.imageUrl).openStream()
                 val bitmap = BitmapFactory.decodeStream(inputStream)
@@ -79,6 +85,7 @@ object Data {
                     )
                     fos = imageUri?.let { resolver.openOutputStream(it) }
                     plant.imageUriPath = imageUri?.toString()
+                    Log.d("TAG", "downloadImages: ${plant.name}")
                 }
                 fos?.use {
                     bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, it)

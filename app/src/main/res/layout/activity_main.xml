@@ -54,6 +54,17 @@
             android:id="@+id/main_viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="?attr/actionBarSize"/>
+            android:layout_marginTop="?attr/actionBarSize"
+            />
     </FrameLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/bt_insert_plant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:importantForAccessibility="no"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/green_primary"
+        android:src="@drawable/ic_add"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,11 +1,13 @@
 package com.example.gardenapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.viewpager2.widget.ViewPager2
 import com.example.gardenapp.datahandling.Data
 import com.example.gardenapp.datahandling.adapters.TabsAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -34,6 +36,10 @@ class MainActivity : AppCompatActivity() {
                 else->AppCompatResources.getDrawable(this,R.drawable.ic_my_garden)
             }
         }.attach()
+
+        findViewById<FloatingActionButton>(R.id.bt_insert_plant).setOnClickListener{
+            startActivity(Intent(this,InsertPlantActivity::class.java))
+        }
     }
 
     override fun onDestroy() {

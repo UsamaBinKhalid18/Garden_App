@@ -3,6 +3,13 @@
     <string name="watering_interval">Water every %d %s</string>
     <string name="plantId">Plant ID : %s</string>
     <string name="zone_number">Growing Zone Number : %d</string>
+    <string name="hint_plant_name">Plant Name</string>
+    <string name="hint_plant_id">Plant ID</string>
+    <string name="hint_watering_interval">Watering Interval (hours)</string>
+    <string name="hint_zone_number">Growing Zone Number</string>
+    <string name="hint_plant_description">Plant Description</string>
+    <string name="bt_add_plant">Add Plant</string>
+
     <plurals name="hour">
         <item quantity="one">hour</item>
         <item quantity="other">hours</item>
