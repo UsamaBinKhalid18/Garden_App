@@ -13,8 +13,8 @@ import com.example.gardenapp.ItemSelectListener
 import com.example.gardenapp.R
 import com.example.gardenapp.datahandling.Data
 
-class AllPlantsListAdapter(private val itemSelectListener: ItemSelectListener) :
-    RecyclerView.Adapter<AllPlantsListAdapter.PlantViewHolder>() {
+class MyGardenAdapter(private val itemSelectListener: ItemSelectListener) :
+    RecyclerView.Adapter<MyGardenAdapter.PlantViewHolder>() {
     inner class PlantViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvPlantName: TextView = view.findViewById(R.id.tv_plant_name_card)
         val ivPlant: ImageView = view.findViewById(R.id.iv_plant_card)
@@ -22,16 +22,16 @@ class AllPlantsListAdapter(private val itemSelectListener: ItemSelectListener) :
         val ibAddToGarden: ImageButton = view.findViewById(R.id.bt_add_to_garden)
     }
 
+    override fun getItemCount(): Int = Data.myGardenList.count()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantViewHolder {
         val layout = LayoutInflater.from(parent.context)
             .inflate(R.layout.card_view_all_plants, parent, false)
         return PlantViewHolder(layout)
     }
 
-    override fun getItemCount(): Int = Data.plantsList.count()
-
     override fun onBindViewHolder(holder: PlantViewHolder, position: Int) {
-        val plant = Data.plantsList[position]
+        val plant = Data.myGardenList[position]
         holder.tvPlantName.text = plant.name
         if (plant.imageUriPath != null)
             holder.ivPlant.setImageURI(Uri.parse(plant.imageUriPath))
@@ -39,22 +39,13 @@ class AllPlantsListAdapter(private val itemSelectListener: ItemSelectListener) :
         holder.cardView.setOnClickListener {
             itemSelectListener.onClick(plant)
         }
-        holder.ibAddToGarden.setImageResource(
-            if (plant.inMyGarden)
-                R.drawable.ic_card_button
-            else
-                R.drawable.outline_box
-        )
-        holder.ibAddToGarden.setOnClickListener {
-            plant.inMyGarden = !plant.inMyGarden
-            if (plant.inMyGarden) {
-                Data.addToGardenList(plant)
-                (it as ImageButton).setImageResource(R.drawable.ic_card_button)
-            } else {
-                Data.removeFromGardenList(plant)
-                (it as ImageButton).setImageResource(R.drawable.outline_box)
-            }
-        }
 
+        holder.ibAddToGarden.setOnClickListener {
+            plant.inMyGarden = false
+            Data.removeFromGardenList(plant)
+            notifyItemRemoved(position)
+
+        }
     }
+
 }

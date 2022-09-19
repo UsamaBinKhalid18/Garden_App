@@ -1,10 +1,13 @@
 package com.example.gardenapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.fragment.app.commit
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.viewpager2.widget.ViewPager2
 import com.example.gardenapp.datahandling.Data
+import com.example.gardenapp.datahandling.adapters.TabsAdapter
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,9 +19,21 @@ class MainActivity : AppCompatActivity() {
             Data.loadPlantsList(applicationContext)
         }
 
-        supportFragmentManager.commit { setReorderingAllowed(true)
-            add(R.id.fcv_main_activity,AllPlantListFragment())
-        }
+        val viewPager=findViewById<ViewPager2>(R.id.main_viewPager)
+        val tabLayout=findViewById<TabLayout>(R.id.main_tab_layout)
+
+        viewPager.adapter= TabsAdapter(this)
+
+        TabLayoutMediator(tabLayout,viewPager){tab,position->
+            tab.text=when(position){
+                0->"All Plants"
+                else->"My Garden"
+            }
+            tab.icon=when(position){
+                0->AppCompatResources.getDrawable(this,R.drawable.ic_all_plants)
+                else->AppCompatResources.getDrawable(this,R.drawable.ic_my_garden)
+            }
+        }.attach()
     }
 
     override fun onDestroy() {

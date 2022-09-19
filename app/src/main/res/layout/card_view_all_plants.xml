@@ -24,7 +24,18 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="160dp"
+        android:layout_marginEnd="60dp"
         android:textColor="@color/black"
-        android:textSize="35sp"
+        android:textSize="32sp"
         android:textStyle="bold" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|end"
+        android:background="@drawable/outline_box"
+        android:src="@drawable/ic_card_button"
+        android:importantForAccessibility="no"
+        android:id="@+id/bt_add_to_garden"
+        />
 </androidx.cardview.widget.CardView>

@@ -18,12 +18,14 @@ object Data {
 
     private const val FILE_PATH="/plants.json"
     val plantsList= mutableListOf<Plant>()
+    val myGardenList= mutableListOf<Plant>()
     private val threadPool = Executors.newFixedThreadPool(3)
 
     fun loadPlantsList(context: Context){
             val dataString=getDataString(context)
             val list=plantListFromDataString(dataString)
             plantsList.addAll(list)
+            updateMyGarden()
             downloadImages(context)
     }
 
@@ -36,6 +38,7 @@ object Data {
             context.assets.open("flowers.json").reader().readText()
         }
     }
+
 
     private fun plantListFromDataString(dataString: String): List<Plant> {
         val listType: Type = object : TypeToken<ArrayList<Plant?>?>() {}.type
@@ -86,9 +89,25 @@ object Data {
         threadPool.shutdown()
     }
 
+    private fun updateMyGarden() {
+        for(plant in plantsList){
+            if(plant.inMyGarden){
+                myGardenList.add(plant)
+            }
+        }
+    }
+
     fun savePlantsList(context: Context){
             val outStream= FileOutputStream(File(context.filesDir.path+FILE_PATH))
             outStream.write(Gson().toJson(plantsList).toByteArray())
             outStream.close()
+    }
+
+    fun addToGardenList(plant:Plant){
+        myGardenList.add(plant)
+    }
+
+    fun removeFromGardenList(plant: Plant) {
+        myGardenList.remove(plant)
     }
 }
