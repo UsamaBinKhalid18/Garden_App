@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gardenapp.datahandling.Plant
-import com.example.gardenapp.datahandling.adapters.MyGardenAdapter
+import com.example.gardenapp.datahandling.adapters.MyGardenParentAdapter
 import com.google.gson.Gson
 
 
@@ -25,12 +25,12 @@ class MyGardenFragment : Fragment(),ItemSelectListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView:RecyclerView=view.findViewById(R.id.rv_my_garden)
-        recyclerView.adapter=MyGardenAdapter(this)
+        val recyclerView:RecyclerView=view.findViewById(R.id.rv_my_garden_parent)
+        recyclerView.adapter=MyGardenParentAdapter(this)
     }
 
     override fun onResume() {
-        view?.findViewById<RecyclerView>(R.id.rv_my_garden)?.adapter?.notifyDataSetChanged()
+        view?.findViewById<RecyclerView>(R.id.rv_my_garden_parent)?.adapter?.notifyDataSetChanged()
         super.onResume()
     }
     override fun onClick(plant: Plant) {

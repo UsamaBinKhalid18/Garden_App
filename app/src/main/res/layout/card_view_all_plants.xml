@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|end"
         android:background="@drawable/outline_box"
-        android:src="@drawable/ic_card_button"
+        android:src="@drawable/ic_card_button_frontyard"
         android:importantForAccessibility="no"
         android:id="@+id/bt_add_to_garden"
         />

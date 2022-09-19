@@ -69,7 +69,7 @@ class InsertPlantActivity : AppCompatActivity(), EasyPermissions.PermissionCallb
                     plantDesc,
                     growthZone,
                     wateringInterval,
-                    inMyGarden = false,
+                    location = 0,
                     imageUriPath = uriForCapturedImage.toString(),
                     imageUrl = null
                 )

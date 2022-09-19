@@ -9,6 +9,13 @@
         <entry key="app/src/main/res/drawable/ic_all_plants.xml" value="0.185" />
         <entry key="app/src/main/res/drawable/ic_camera.xml" value="0.233" />
         <entry key="app/src/main/res/drawable/ic_card_button.xml" value="0.185" />
+        <entry key="app/src/main/res/drawable/ic_card_button_backyard.xml" value="0.233" />
+        <entry key="app/src/main/res/drawable/ic_card_button_black.xml" value="0.233" />
+        <entry key="app/src/main/res/drawable/ic_card_button_blue.xml" value="0.224" />
+        <entry key="app/src/main/res/drawable/ic_card_button_green.xml" value="0.224" />
+        <entry key="app/src/main/res/drawable/ic_card_button_indoors.xml" value="0.233" />
+        <entry key="app/src/main/res/drawable/ic_card_button_rooftop.xml" value="0.233" />
+        <entry key="app/src/main/res/drawable/ic_card_button_white.xml" value="0.224" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/library_photo.xml" value="0.233" />
         <entry key="app/src/main/res/drawable/potted_plant-48px.xml" value="0.208" />
@@ -17,6 +24,8 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_plant_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/card_view_all_plants.xml" value="0.6666666666666666" />
+        <entry key="app/src/main/res/layout/card_view_my_garden.xml" value="0.34270833333333334" />
+        <entry key="app/src/main/res/layout/category_layout.xml" value="0.28854166666666664" />
         <entry key="app/src/main/res/layout/fragment_all_flower_list.xml" value="0.41794871794871796" />
         <entry key="app/src/main/res/layout/fragment_all_plant_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_my_garden.xml" value="0.3338541666666667" />

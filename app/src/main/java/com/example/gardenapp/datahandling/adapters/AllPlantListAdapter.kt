@@ -1,5 +1,6 @@
 package com.example.gardenapp.datahandling.adapters
 
+import android.app.AlertDialog
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -40,19 +41,47 @@ class AllPlantsListAdapter(private val itemSelectListener: ItemSelectListener) :
             itemSelectListener.onClick(plant)
         }
         holder.ibAddToGarden.setImageResource(
-            if (plant.inMyGarden)
-                R.drawable.ic_card_button
-            else
-                R.drawable.outline_box
+            when (plant.location) {
+                1 -> R.drawable.ic_card_button_frontyard
+                2 -> R.drawable.ic_card_button_backyard
+                3 -> R.drawable.ic_card_button_rooftop
+                4 -> R.drawable.ic_card_button_indoors
+                else -> R.drawable.outline_box
+            }
         )
         holder.ibAddToGarden.setOnClickListener {
-            plant.inMyGarden = !plant.inMyGarden
-            if (plant.inMyGarden) {
-                Data.addToGardenList(plant)
-                (it as ImageButton).setImageResource(R.drawable.ic_card_button)
-            } else {
-                Data.removeFromGardenList(plant)
+            val categories = arrayOf("Frontyard", "Backyard", "Rooftop", "Indoor")
+            if (plant.location != 0) {
+                Data.removePlantFromGarden(plant, plant.location)
+                plant.location = 0
                 (it as ImageButton).setImageResource(R.drawable.outline_box)
+            } else {
+                AlertDialog.Builder(holder.itemView.context).apply {
+                    setTitle("Select Location")
+                    setSingleChoiceItems(
+                        categories,
+                        -1
+                    )
+                    { _, i ->
+                        plant.location = i + 1
+                        Data.addPlantToGarden(plant, plant.location)
+                        holder.ibAddToGarden.setImageResource(
+                            when (plant.location) {
+                                1 -> R.drawable.ic_card_button_frontyard
+                                2 -> R.drawable.ic_card_button_backyard
+                                3 -> R.drawable.ic_card_button_rooftop
+                                4 -> R.drawable.ic_card_button_indoors
+                                else -> R.drawable.outline_box
+                            }
+                        )
+                    }
+                    setPositiveButton("Done"){ _, _ -> }
+                    setNegativeButton("Cancel") { _, _ ->
+                        plant.location = 0
+                        (it as ImageButton).setImageResource(R.drawable.outline_box)
+                    }
+                    create().apply { setCanceledOnTouchOutside(false);show() }
+                }
             }
         }
 
