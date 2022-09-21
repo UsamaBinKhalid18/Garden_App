@@ -31,6 +31,7 @@ class AllPlantListFragment : Fragment(),ItemSelectListener {
     }
 
     override fun onResume() {
+
         view?.findViewById<RecyclerView>(R.id.rv_all_flower_list_fragment)?.adapter?.notifyDataSetChanged()
         super.onResume()
     }

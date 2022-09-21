@@ -9,6 +9,7 @@
     <string name="hint_zone_number">Growing Zone Number</string>
     <string name="hint_plant_description">Plant Description</string>
     <string name="bt_add_plant">Add Plant</string>
+    <string name="camera">Camera</string>
 
     <plurals name="hour">
         <item quantity="one">hour</item>

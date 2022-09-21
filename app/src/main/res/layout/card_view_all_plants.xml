@@ -38,4 +38,14 @@
         android:importantForAccessibility="no"
         android:id="@+id/bt_add_to_garden"
         />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_share"
+        android:layout_gravity="end|top"
+        android:backgroundTint="#0000"
+        android:importantForAccessibility="no"
+        android:id="@+id/bt_share_plant"
+        />
 </androidx.cardview.widget.CardView>

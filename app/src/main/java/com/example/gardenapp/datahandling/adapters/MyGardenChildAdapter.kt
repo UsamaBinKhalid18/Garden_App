@@ -31,8 +31,10 @@ class MyGardenChildAdapter(
     override fun onBindViewHolder(holder: ChildViewHolder, position: Int) {
         val plant = Data.categoryList[categoryID].plantsList[position]
         holder.tvPlantName.text = plant.name
-        if (plant.imageUriPath != null) {
+        try{
             holder.ivPlant.setImageURI(Uri.parse(plant.imageUriPath))
+        }catch(e:Exception){
+            holder.ivPlant.setImageResource(R.drawable.img_place_holder)
         }
         holder.cardView.setOnClickListener {
             itemSelectListener.onClick(plant)
