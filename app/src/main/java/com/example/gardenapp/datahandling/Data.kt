@@ -52,17 +52,17 @@ object Data {
     }
 
 
-    private fun plantListFromDataString(dataString: String, context: Context): List<Plant> {
+    fun plantListFromDataString(dataString: String, context: Context): List<Plant> {
         val listType: Type = object : TypeToken<ArrayList<Plant?>?>() {}.type
-        try {
-            return Gson().fromJson(dataString, listType)
+        return try {
+            Gson().fromJson(dataString, listType)
         } catch (e: Exception) {
             Toast.makeText(
                 context,
                 "Could not load local data, Using default data for app",
                 Toast.LENGTH_SHORT
             ).show()
-            return Gson().fromJson(
+            Gson().fromJson(
                 context.assets.open("flowers.json").reader().readText(),
                 listType
             )

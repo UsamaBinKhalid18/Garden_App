@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.example.gardenapp.datahandling.Data
 import com.example.gardenapp.datahandling.Plant
+import com.example.gardenapp.datahandling.Validator
 import com.google.android.material.textfield.TextInputEditText
 import pub.devrel.easypermissions.EasyPermissions
 import java.io.File
@@ -61,19 +62,20 @@ class InsertPlantActivity : AppCompatActivity(), EasyPermissions.PermissionCallb
                 findViewById<TextInputEditText>(R.id.et_zone_number).text.toString().toInt()
             val wateringInterval =
                 findViewById<TextInputEditText>(R.id.et_watering_interval).text.toString().toInt()
-            //findViewById<ImageView>(R.id.image_view_insert_plant).bitm
-            Data.plantsList.add(
-                Plant(
-                    plantName,
-                    plantId,
-                    plantDesc,
-                    growthZone,
-                    wateringInterval,
-                    location = 0,
-                    imageUriPath = uriForCapturedImage.toString(),
-                    imageUrl = null
+            if (Validator.areValid(plantId, plantName, growthZone, wateringInterval)) {
+                Data.plantsList.add(
+                    Plant(
+                        plantName,
+                        plantId,
+                        plantDesc,
+                        growthZone,
+                        wateringInterval,
+                        location = 0,
+                        imageUriPath = uriForCapturedImage.toString(),
+                        imageUrl = null
+                    )
                 )
-            )
+            }
             finish()
         }
     }
